@@ -400,9 +400,6 @@ html[lang=en] .mz{font-size:clamp(46px,15vw,92px)}
 html[lang=uk] .mz{font-size:clamp(46px,15vw,92px)}
 html[lang=en] .mzl,html[lang=uk] .mzl{font-size:clamp(17px,4.8vw,22px)}
 html[lang=en] .back p,html[lang=uk] .back p{font-size:.94em}
-.lang button[data-l=he]{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 30'><rect width='44' height='30' fill='%23fff'/><rect y='3' width='44' height='4' fill='%230038b8'/><rect y='23' width='44' height='4' fill='%230038b8'/><g fill='none' stroke='%230038b8' stroke-width='1.3'><path d='M22 8.6l5.2 9H16.8z'/><path d='M22 21.4l5.2-9H16.8z'/></g></svg>")}
-.lang button[data-l=en]{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'><rect width='60' height='40' fill='%23012169'/><path d='M0 0L60 40M60 0L0 40' stroke='%23fff' stroke-width='8'/><path d='M0 0L60 40M60 0L0 40' stroke='%23c8102e' stroke-width='3'/><path d='M30 0V40M0 20H60' stroke='%23fff' stroke-width='13'/><path d='M30 0V40M0 20H60' stroke='%23c8102e' stroke-width='8'/></svg>")}
-.lang button[data-l=uk]{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 30'><rect width='44' height='15' fill='%230057b7'/><rect y='15' width='44' height='15' fill='%23ffd700'/></svg>")}
 .lang{padding:4px;gap:6px}
 .lang button{position:relative;width:50px;height:34px;padding:0;border-radius:8px;background-size:cover;background-position:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(74,18,36,.25);opacity:.62;transition:opacity .25s,transform .25s}
 .lang button[aria-pressed=true]{opacity:1;transform:scale(1.06);box-shadow:0 0 0 2px #c9a15a,0 4px 10px -3px rgba(74,18,36,.55)}
@@ -413,6 +410,17 @@ html[lang=uk] .mono{font-family:'Cormorant Garamond',serif}
 html[lang=uk] .mz{font-family:'Playfair Display','Noto Serif',serif;font-weight:900}
 html[lang=uk] .after h2,html[lang=uk] .rsvp h2{font-family:'Playfair Display','Noto Serif',serif;font-weight:700}
 html[lang=uk] .pw span,html[lang=uk] .pw b{font-family:'Assistant',sans-serif}
+
+.lang{left:50%;transform:translateX(-50%);top:calc(10px + env(safe-area-inset-top,0px));padding:4px;gap:4px}
+.lang button{width:auto;height:auto;min-width:54px;padding:8px 16px;border-radius:999px;background:none;background-image:none;box-shadow:none;overflow:visible;opacity:1;transform:none;color:var(--wine);font:700 14px/1 'Assistant','Noto Sans',sans-serif;transition:background .3s,color .3s,box-shadow .3s}
+.lang button span{position:static;transform:none;padding:0;background:none;color:inherit;font:inherit;letter-spacing:.02em}
+.lang button[aria-pressed=true]{background:linear-gradient(180deg,#9a3350,#6b1d33 60%,#4a1224);color:#f6e7bd;font-weight:800;transform:none;box-shadow:0 6px 12px -4px rgba(74,18,36,.7),inset 0 1px 0 rgba(255,255,255,.3),0 0 0 2px #c9a15a}
+html[lang=uk] .lang button{font-family:'Manrope',sans-serif}
+html[lang=en] .names,html[lang=uk] .names{font-size:10.4cqw;gap:2.4cqw}
+html[lang=en] .names em,html[lang=uk] .names em{font-size:8cqw}
+html[lang=en] .date,html[lang=uk] .date{font-size:4.6cqw;line-height:1.35}
+html[lang=en] .date small,html[lang=uk] .date small{font-size:6.6cqw}
+html[lang=en] .venue,html[lang=uk] .venue{font-size:4.8cqw;padding:2.4cqw 5cqw}
 </style>
 </head>
 <body>
