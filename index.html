@@ -431,6 +431,15 @@ html[lang=uk] .done,html[lang=uk] .names span{font-family:'Noto Serif Display','
 html[lang=uk] .after h2,html[lang=uk] .rsvp h2{font-family:'Source Sans 3','Noto Sans',sans-serif;font-weight:800}
 .mz{font-family:'Frank Ruhl Libre','Noto Serif',serif;font-weight:900;letter-spacing:.01em}
 html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weight:900}
+.pw{flex-wrap:wrap;justify-content:center;row-gap:3px}
+.pw .pph{flex:0 0 100%;text-align:center;letter-spacing:.06em}
+.pw b{color:#a67c3c}
+@keyframes lgBlur{0%{filter:blur(0);opacity:1}38%{filter:blur(8px);opacity:.2}62%{filter:blur(8px);opacity:.2}100%{filter:blur(0);opacity:1}}
+@keyframes lgFlash{0%{opacity:0}35%{opacity:1}100%{opacity:0}}
+.stage.lgfx,.after.lgfx{animation:lgBlur .85s ease both}
+.lgflash{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:0;background:radial-gradient(70% 38% at 50% 6%,rgba(255,232,178,.95),rgba(255,232,178,.35) 45%,rgba(255,232,178,0) 75%),radial-gradient(90% 60% at 50% 50%,rgba(255,255,255,.35),rgba(255,255,255,0))}
+.lgflash.go{animation:lgFlash .85s ease both}
+@media (prefers-reduced-motion:reduce){.stage.lgfx,.after.lgfx,.lgflash.go{animation:none}}
 </style>
 </head>
 <body>
@@ -553,7 +562,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
   </div>
   <div class="fin" id="fin"><canvas class="fwk" id="fwc"></canvas>
     <div class="mz" id="mz" aria-label="מזל טוב"></div>
-    <div class="pw"><span>powered by</span><b>A. Adam</b><a class="pph" href="tel:+972504523213">050 452 3213</a></div>
+    <div class="pw"><span>powered by</span><b>A. Adam</b><a class="pph" href="tel:+972504523213">0504523213</a></div>
   </div>
 </section>
 <script>
@@ -809,6 +818,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
   });
 })();
 </script>
+<div class="lgflash" id="lgf"></div>
 <div class="lang" id="lang" role="group" aria-label="Language"><button type="button" data-l="he" aria-pressed="true"><span>עב</span></button><button type="button" data-l="en" aria-pressed="false"><span>EN</span></button><button type="button" data-l="uk" aria-pressed="false"><span>UK</span></button></div>
 <script>
 (function(){
@@ -871,7 +881,13 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
     try{localStorage.setItem('lang',l)}catch(e){}
     window.dispatchEvent(new Event('resize'));
   }
-  [].forEach.call(document.querySelectorAll('#lang button'),function(b){b.addEventListener('click',function(){set(b.getAttribute('data-l'))})});
+  [].forEach.call(document.querySelectorAll('#lang button'),function(b){b.addEventListener('click',function(){var l=b.getAttribute('data-l');if(l===cur)return;
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){set(l);return}
+    var f=document.getElementById('lgf'),a=[document.getElementById('stage'),document.getElementById('after')];
+    f.classList.remove('go');a.forEach(function(x){x.classList.remove('lgfx')});void f.offsetWidth;
+    f.classList.add('go');a.forEach(function(x){x.classList.add('lgfx')});
+    setTimeout(function(){set(l)},320);
+    setTimeout(function(){f.classList.remove('go');a.forEach(function(x){x.classList.remove('lgfx')})},900)})});
   var q=(location.search.match(/[?&]lang=(he|en|uk)/)||[])[1],st=null;
   try{st=localStorage.getItem('lang')}catch(e){}
   var init=q||st||'he';if(init!=='he')set(init);
