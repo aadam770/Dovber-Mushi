@@ -453,6 +453,9 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
 .pw .pph a{color:rgba(107,74,84,.8);text-decoration:none;font:500 12.5px 'Assistant','Noto Sans',sans-serif;letter-spacing:.06em;display:inline-flex;align-items:center}
 .pw .pph a.pi{padding:4px;margin:-4px}
 .pw .pph a.pi svg{display:block}
+.rsvp{margin-bottom:6vh}
+.rsvp .rsub{margin:20px auto 0;max-width:80vw;font:600 16px/1.5 'Assistant','Noto Sans',sans-serif;color:#6b4a54}
+.rsvp .rgo{width:min(90vw,380px);margin:22px auto 0;text-decoration:none}
 </style>
 </head>
 <body>
@@ -561,16 +564,11 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
       <div class="vn rv"><button class="cp" id="cpb" type="button"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 017.5 4H15"/></svg><span data-i="cp">העתקת הכתובת</span></button></div>
       <div class="rv calw"><button class="nb nb-c" id="calbtn" type="button"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M12 13.2l.9 1.8 2 .3-1.45 1.4.35 2-1.8-1-1.8 1 .35-2L9.1 15.3l2-.3z"/></svg><span data-i="addcal2">הוסף ליומן</span></button></div>
     </div>
-    <div class="rsvp rv" id="rsvp" hidden>
+    <div class="rsvp rv" id="rsvp">
       <h2 data-i="r_h">אישור הגעה</h2><div class="orn"><i></i></div>
-      <form id="rf" novalidate>
-        <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-        <label><span data-i="r_n">שם מלא</span><input id="rn" type="text" name="name" maxlength="80" autocomplete="name"></label>
-        <label><span data-i="r_g">מספר אורחים</span><select id="rg" name="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></label>
-        <label><span data-i="r_p">טלפון (לא חובה)</span><input id="rp" name="phone" type="tel" maxlength="30" autocomplete="tel"></label>
-        <button class="nb nb-w" type="submit" id="rb"><span data-i="r_b">נגיע בשמחה</span></button>
-        <p class="rmsg" id="rm" aria-live="polite"></p>
-      </form></div>
+      <p class="rsub" data-i="r_sub">נשמח לדעת אם תגיעו לשמחה</p>
+      <a class="nb nb-w rgo" id="rgo" href="https://forms.gle/MAd4VYJiEPCatguQA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span data-i="r_go">לאישור הגעה</span></a>
+    </div>
     <p class="done" id="done" data-i="done">מזל טוב! החופה מתחילה</p>
   </div>
   <div class="fin" id="fin"><canvas class="fwk" id="fwc"></canvas>
@@ -852,7 +850,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
     h_cd:'Until the Chuppah',u_d:'Days',u_h:'Hours',u_m:'Minutes',u_s:'Seconds',
     h_way:'Getting there',gopen:'Open in Google Maps',
     done:'Mazel Tov! The chuppah is starting',mz:'Mazel Tov!',tag:'We would be delighted to see you at the joy of our grandchildren',
-    cp:'Copy address',cpok:'Address copied',addr:'HaPardes Hall, Eli Horovitz St 23, Rehovot',r_h:'RSVP',r_n:'Full name',r_g:'Number of guests',r_p:'Phone (optional)',r_b:'We will be there',
+    cp:'Copy address',cpok:'Address copied',addr:'HaPardes Hall, Eli Horovitz St 23, Rehovot',r_h:'RSVP',r_sub:'We would love to know if you are coming',r_go:'Confirm attendance',r_n:'Full name',r_g:'Number of guests',r_p:'Phone (optional)',r_b:'We will be there',
     r_need:'Please enter your name',r_ok:'Thank you! We got your reply.',r_err:'Could not send. Please try again.',
     title:'Dovber & Mushi · Wedding Invitation',
     cal:['Wedding of Dovber & Mushi','HaPardes Hall, Eli Horovitz St 23, Rehovot','Chuppah at 18:30 (reception 17:30)\nDirections: ']
@@ -872,7 +870,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
     h_cd:'До хупи залишилось',u_d:'Дні',u_h:'Години',u_m:'Хвилини',u_s:'Секунди',
     h_way:'Як дістатися',gopen:'Відкрити в Google Maps',
     done:'Мазл тов! Хупа починається',mz:'Мазл тов!',tag:'Будемо раді бачити вас на святі наших онуків',
-    cp:'Скопіювати адресу',cpok:'Адресу скопійовано',addr:'Зал «ХаПардес», вул. Елі Горовіца 23, Реховот',r_h:'Підтвердження приходу',r_n:'Повне ім\u2019я',r_g:'Кількість гостей',r_p:'Телефон (необов\u2019язково)',r_b:'Ми прийдемо',
+    cp:'Скопіювати адресу',cpok:'Адресу скопійовано',addr:'Зал «ХаПардес», вул. Елі Горовіца 23, Реховот',r_h:'Підтвердження приходу',r_sub:'Будемо раді знати, чи ви прийдете',r_go:'Підтвердити прихід',r_n:'Повне ім\u2019я',r_g:'Кількість гостей',r_p:'Телефон (необов\u2019язково)',r_b:'Ми прийдемо',
     r_need:'Будь ласка, введіть ім\u2019я',r_ok:'Дякуємо! Ми отримали вашу відповідь.',r_err:'Не вдалося надіслати. Спробуйте ще раз.',
     title:'Довбер і Муші · Запрошення на весілля',
     cal:['Весілля Довбера і Муші','Зал «ХаПардес», вул. Елі Горовіца 23, Реховот','Хупа о 18:30 (зустріч гостей о 17:30)\nЯк дістатися: ']
@@ -905,23 +903,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
   var q=(location.search.match(/[?&]lang=(he|en|uk)/)||[])[1],st=null;
   try{st=localStorage.getItem('lang')}catch(e){}
   var init=q||st||'he';if(init!=='he')set(init);
-  /* RSVP */
-  var rs=document.getElementById('rsvp');
-  if(RSVP_KEY){
-    rs.hidden=false;
-    var f=document.getElementById('rf'),m=document.getElementById('rm'),b=document.getElementById('rb');
-    f.addEventListener('submit',function(ev){
-      ev.preventDefault();var n=document.getElementById('rn').value.trim();
-      if(!n){m.textContent=tx('r_need');return}
-      b.disabled=true;m.textContent='';
-      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({access_key:RSVP_KEY,subject:'אישור הגעה – חתונת דובער ומושי',from_name:'אתר ההזמנה',name:n,guests:document.getElementById('rg').value,phone:document.getElementById('rp').value,botcheck:f.botcheck.value})})
-      .then(function(r){return r.json()}).then(function(j){
-        if(j&&j.success){m.textContent=tx('r_ok');rs.classList.add('sent')}else{throw 0}
-      }).catch(function(){m.textContent=tx('r_err');b.disabled=false});
-    });
-  }
-})();
+  })();
 </script>
 </body>
 </html>
