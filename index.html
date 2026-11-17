@@ -764,7 +764,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
   /* mazal tov + fireworks */
   var mz=$('mz');
   window.__buildMz=function(txt){var k=0;mz.innerHTML='';txt.split('').forEach(function(ch){var sp=document.createElement('span');if(ch===' '){sp.className='wsp'}else{sp.textContent=ch;sp.style.setProperty('--i',k++)}mz.appendChild(sp)})};
-  window.__buildMz('מזל טוב');
+  window.__buildMz('מזל טוב!');
   var cv=$('fwc'),cx=cv.getContext('2d'),P=[],R=[],run=false,rm=matchMedia('(prefers-reduced-motion:reduce)').matches,T0=0,FL=[];
   var COL=['#d9a03a','#c9892f','#b8456a','#e0607e','#8a2a45','#f0b84a','#a63a5a'];
   function sz(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=r.width*d;cv.height=r.height*d;cx.setTransform(d,0,0,d,0,0);return r}
@@ -847,7 +847,7 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
     tl1:'<b>Reception</b><span>HaPardes Hall, Rehovot</span>',tl2:'<b>Chuppah &amp; Dinner</b><span>HaPardes Hall, Rehovot</span>',
     h_cd:'Until the Chuppah',u_d:'Days',u_h:'Hours',u_m:'Minutes',u_s:'Seconds',
     h_way:'Getting there',gopen:'Open in Google Maps',
-    done:'Mazel Tov! The chuppah is starting',mz:'Mazel Tov',tag:'We would be delighted to see you at the joy of our grandchildren',
+    done:'Mazel Tov! The chuppah is starting',mz:'Mazel Tov!',tag:'We would be delighted to see you at the joy of our grandchildren',
     cp:'Copy address',cpok:'Address copied',addr:'HaPardes Hall, Eli Horovitz St 23, Rehovot',r_h:'RSVP',r_n:'Full name',r_g:'Number of guests',r_p:'Phone (optional)',r_b:'We will be there',
     r_need:'Please enter your name',r_ok:'Thank you! We got your reply.',r_err:'Could not send. Please try again.',
     title:'Dovber & Mushi · Wedding Invitation',
@@ -867,13 +867,13 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
     tl1:'<b>Зустріч гостей</b><span>Зал «ХаПардес», Реховот</span>',tl2:'<b>Хупа та вечеря</b><span>Зал «ХаПардес», Реховот</span>',
     h_cd:'До хупи залишилось',u_d:'Дні',u_h:'Години',u_m:'Хвилини',u_s:'Секунди',
     h_way:'Як дістатися',gopen:'Відкрити в Google Maps',
-    done:'Мазл тов! Хупа починається',mz:'Мазл тов',tag:'Будемо раді бачити вас на святі наших онуків',
+    done:'Мазл тов! Хупа починається',mz:'Мазл тов!',tag:'Будемо раді бачити вас на святі наших онуків',
     cp:'Скопіювати адресу',cpok:'Адресу скопійовано',addr:'Зал «ХаПардес», вул. Елі Горовіца 23, Реховот',r_h:'Підтвердження приходу',r_n:'Повне ім\u2019я',r_g:'Кількість гостей',r_p:'Телефон (необов\u2019язково)',r_b:'Ми прийдемо',
     r_need:'Будь ласка, введіть ім\u2019я',r_ok:'Дякуємо! Ми отримали вашу відповідь.',r_err:'Не вдалося надіслати. Спробуйте ще раз.',
     title:'Довбер і Муші · Запрошення на весілля',
     cal:['Весілля Довбера і Муші','Зал «ХаПардес», вул. Елі Горовіца 23, Реховот','Хупа о 18:30 (зустріч гостей о 17:30)\nЯк дістатися: ']
   }};
-  var HE={cp:'העתקת הכתובת',cpok:'הכתובת הועתקה',addr:'אולמי ה׳פרדס׳, רחוב אלי הורוביץ 23, רחובות',mz:'מזל טוב',title:'דובער ומושי · הזמנה לחתונה',r_ok:'תודה! קיבלנו את תשובתכם.',r_err:'השליחה נכשלה. נסו שוב.',r_need:'נא להזין שם',
+  var HE={cp:'העתקת הכתובת',cpok:'הכתובת הועתקה',addr:'אולמי ה׳פרדס׳, רחוב אלי הורוביץ 23, רחובות',mz:'מזל טוב!',title:'דובער ומושי · הזמנה לחתונה',r_ok:'תודה! קיבלנו את תשובתכם.',r_err:'השליחה נכשלה. נסו שוב.',r_need:'נא להזין שם',
     cal:['חתונת דובער & מושי','אולמי ה׳פרדס׳ רחובות, אלי הורוביץ 23, רחובות','החופה בשעה 18:30 (קבלת פנים 17:30)\nהגעה: ']};
   var els=[].slice.call(document.querySelectorAll('[data-i]'));
   els.forEach(function(e){e.__he=e.innerHTML});
