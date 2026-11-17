@@ -462,6 +462,12 @@ html[lang=uk] .mz{font-family:'Noto Serif Display','Noto Serif',serif;font-weigh
 .cdate .d3{font:600 15px/1.4 'Assistant','Noto Sans',sans-serif;color:#7a5a64;letter-spacing:.03em}
 html[lang=uk] .cdate .d1{font-family:'Noto Serif Display','Noto Serif',serif}
 .mono svg{display:block;width:24cqw;height:auto;fill:#e6cc92;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+.snd{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:60;width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;color:var(--wine);background:rgba(255,250,246,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 16px -6px rgba(74,18,36,.45),inset 0 1px 0 #fff;-webkit-tap-highlight-color:transparent;transition:transform .2s}
+.snd:active{transform:scale(.9)}
+.snd .off{display:block}.snd .on{display:none}
+.snd[aria-pressed=true] .off{display:none}.snd[aria-pressed=true] .on{display:block}
+.snd[aria-pressed=true]{color:#f6e7bd;background:linear-gradient(180deg,#9a3350,#6b1d33 60%,#4a1224);box-shadow:0 6px 12px -4px rgba(74,18,36,.7),inset 0 1px 0 rgba(255,255,255,.3),0 0 0 2px #c9a15a}
+.snd:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -835,6 +841,8 @@ html[lang=uk] .cdate .d1{font-family:'Noto Serif Display','Noto Serif',serif}
   });
 })();
 </script>
+<audio id="bgm" src="music.m4a" loop preload="none"></audio>
+<button class="snd" id="snd" type="button" aria-label="Music" aria-pressed="false"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z" fill="currentColor" stroke="none"/><g class="on"><path d="M15.5 9a4 4 0 010 6"/><path d="M18 6.5a7.5 7.5 0 010 11"/></g><path class="off" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
 <div class="lgflash" id="lgf"></div>
 <div class="lang" id="lang" role="group" aria-label="Language"><button type="button" data-l="he" aria-pressed="true"><span>עב</span></button><button type="button" data-l="en" aria-pressed="false"><span>EN</span></button><button type="button" data-l="uk" aria-pressed="false"><span>УКР</span></button></div>
 <script>
@@ -910,6 +918,34 @@ html[lang=uk] .cdate .d1{font-family:'Noto Serif Display','Noto Serif',serif}
   try{st=localStorage.getItem('lang')}catch(e){}
   var init=q||st||'he';if(init!=='he')set(init);
   })();
+</script>
+<script>
+(function(){
+  var a=document.getElementById('bgm'),b=document.getElementById('snd'),VOL=.4,want=true,fade=null,started=false;
+  try{if(localStorage.getItem('music')==='off')want=false}catch(e){}
+  function ui(on){b.setAttribute('aria-pressed',on?'true':'false')}
+  function fadeTo(v,ms,done){clearInterval(fade);var s0=a.volume,t0=Date.now();fade=setInterval(function(){var k=Math.min(1,(Date.now()-t0)/ms);a.volume=Math.max(0,Math.min(1,s0+(v-s0)*k));if(k>=1){clearInterval(fade);done&&done()}},50)}
+  function play(){
+    a.volume=0;var pr=a.play();
+    if(pr&&pr.then)pr.then(function(){started=true;ui(true);fadeTo(VOL,2500)}).catch(function(){ui(false)});
+  }
+  function stop(){fadeTo(0,500,function(){a.pause()});ui(false)}
+  function first(){
+    ['click','touchend','keydown'].forEach(function(e){removeEventListener(e,first,true)});
+    if(want&&a.paused)play();
+  }
+  ['click','touchend','keydown'].forEach(function(e){addEventListener(e,first,true)});
+  b.addEventListener('click',function(ev){
+    ev.stopPropagation();
+    if(a.paused||!b.getAttribute('aria-pressed')||b.getAttribute('aria-pressed')==='false'){want=true;try{localStorage.setItem('music','on')}catch(e){};play()}
+    else{want=false;try{localStorage.setItem('music','off')}catch(e){};stop()}
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){if(!a.paused)a.pause()}
+    else if(want&&started&&a.paused){a.volume=VOL;a.play().catch(function(){ui(false)})}
+  });
+  a.addEventListener('error',function(){b.hidden=true});
+})();
 </script>
 </body>
 </html>
